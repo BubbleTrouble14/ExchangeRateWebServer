@@ -2,6 +2,7 @@ const http = require("http");
 var schedule = require("node-schedule");
 const fetch = require("node-fetch");
 let data;
+const port = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
   res.setHeader("Content-type", "application/json");
@@ -32,8 +33,6 @@ schedule.scheduleJob("0 */6 * * *", function () {
   });
 });
 
-server.listen(8080, () => {
-  console.log("listen");
-});
+server.listen(port);
 
 fetchCurrencyExchange();
